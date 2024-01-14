@@ -1,0 +1,11 @@
+The following files can be used to recreate (or improve) the custom made shopping cart using localStorage
+
+
+AddToCartList.js - This will allow you to add the item to the local storage to keep up with
+file:///C:/Users/27par/Desktop/NextJS%20Projects/onlyjojo/assets/functions/AddToCartList.js
+
+CheckingForCartList.js - This will update the cart with the appropriate items, quantities and subtotals to the arrays
+file:///C:/Users/27par/Desktop/NextJS%20Projects/onlyjojo/assets/functions/CheckingForCartList.js
+
+CartCheckout.js - This will allow you to update the final total price with quantities * subtotals
+file:///C:/Users/27par/Desktop/NextJS%20Projects/onlyjojo/components/views/cart/CartCheckout.js
