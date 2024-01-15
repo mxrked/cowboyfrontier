@@ -35,58 +35,29 @@ function addingItemsToArray(data, array) {
   });
 }
 
-export default function SaveCartItems(foodData, toyData, housingData) {
-  const ALL_FOOD_ITEMS = [];
-  const ALL_TOY_ITEMS = [];
-  const ALL_HOUSING_ITEMS = [];
+export default function SaveCartItems(hatData, bootData, saddleData, gunData) {
+  const ALL_HAT_ITEMS = [];
+  const ALL_BOOT_ITEMS = [];
+  const ALL_SADDLE_ITEMS = [];
+  const ALL_GUN_ITEMS = [];
   const ALL_STORE_ITEMS = [];
   const USER_CART_ITEMS = [];
   const USER_CART_QUANTITIES = [];
   const USER_CART_SUBTOTALS = [];
 
   // Adding all type of items to their respected array
-  addingItemsToArray(foodData, ALL_FOOD_ITEMS);
-  addingItemsToArray(toyData, ALL_TOY_ITEMS);
-  addingItemsToArray(housingData, ALL_HOUSING_ITEMS);
-
-  // foodData.forEach((item) => {
-  //   if (!ALL_FOOD_ITEMS.includes(item)) {
-  //     ALL_FOOD_ITEMS.push(item);
-  //   }
-  // });
-  // toyData.forEach((item) => {
-  //   if (!ALL_TOY_ITEMS.includes(item)) {
-  //     ALL_TOY_ITEMS.push(item);
-  //   }
-  // });
-  // housingData.forEach((item) => {
-  //   if (!ALL_HOUSING_ITEMS.includes(item)) {
-  //     ALL_HOUSING_ITEMS.push(item);
-  //   }
-  // });
+  addingItemsToArray(hatData, ALL_HAT_ITEMS);
+  addingItemsToArray(bootData, ALL_BOOT_ITEMS);
+  addingItemsToArray(saddleData, ALL_SADDLE_ITEMS);
+  addingItemsToArray(gunData, ALL_GUN_ITEMS);
 
   // Adding all items to one array
-  addingItemsToArray(ALL_FOOD_ITEMS, ALL_STORE_ITEMS);
-  addingItemsToArray(ALL_TOY_ITEMS, ALL_STORE_ITEMS);
-  addingItemsToArray(ALL_HOUSING_ITEMS, ALL_STORE_ITEMS);
-  // ALL_FOOD_ITEMS.forEach((item) => {
-  //   if (!ALL_STORE_ITEMS.includes(item)) {
-  //     ALL_STORE_ITEMS.push(item);
-  //   }
-  // });
-  // ALL_TOY_ITEMS.forEach((item) => {
-  //   if (!ALL_STORE_ITEMS.includes(item)) {
-  //     ALL_STORE_ITEMS.push(item);
-  //   }
-  // });
-  // ALL_HOUSING_ITEMS.forEach((item) => {
-  //   if (!ALL_STORE_ITEMS.includes(item)) {
-  //     ALL_STORE_ITEMS.push(item);
-  //   }
-  // });
+  addingItemsToArray(ALL_HAT_ITEMS, ALL_STORE_ITEMS);
+  addingItemsToArray(ALL_BOOT_ITEMS, ALL_STORE_ITEMS);
+  addingItemsToArray(ALL_SADDLE_ITEMS, ALL_STORE_ITEMS);
+  addingItemsToArray(ALL_GUN_ITEMS, ALL_STORE_ITEMS);
 
   // Adding items, item quantities, item prices to respected arrays
-
   ALL_STORE_ITEMS.forEach((item) => {
     if (localStorage.getItem("Item Name: " + item.productName)) {
       if (localStorage.getItem(item.productName + " Quantity")) {
