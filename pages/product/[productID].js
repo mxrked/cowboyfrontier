@@ -7,6 +7,8 @@ import path from "path";
 // Library Imports
 
 // Data/Functions/Images Imports
+import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
+import DeclareStorageVariable from "@/assets/functions/data/storage/DeclareStorageVariable";
 import productsData from "../../public/data/Store_Data/All_Products.json";
 
 // Component Imports
@@ -95,6 +97,22 @@ export async function getServerSideProps({ params }) {
 
 export default function Product({ product }) {
   const router = useRouter();
+
+  // Saving Cart Data
+  useEffect(() => {
+    // DeclareStorageVariable("local", "Item Name: Test Product", "Test Product");
+    // DeclareStorageVariable("local", "Test Product Quantity", 2);
+
+    setTimeout(() => {
+      // Getting the cart items
+      SaveCartItems(
+        HAT_ITEMS_DATA,
+        BOOT_ITEMS_DATA,
+        SADDLE_ITEMS_DATA,
+        GUN_ITEMS_DATA
+      );
+    }, 500);
+  });
 
   return (
     <div>

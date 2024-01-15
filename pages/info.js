@@ -7,6 +7,8 @@ import path from "path";
 // Library Imports
 
 // Data/Functions/Images Imports
+import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
+import DeclareStorageVariable from "@/assets/functions/data/storage/DeclareStorageVariable";
 
 // Component Imports
 
@@ -99,10 +101,8 @@ export default function Info({
 
   // Saving Cart Data
   useEffect(() => {
-    // DeclareStorageVariable("local", "Item Name: Boot 1", "Boot 1");
-    // DeclareStorageVariable("local", "Boot 1 Quantity", 2);
-    // DeclareStorageVariable("local", "Item Name: Saddle 1", "Saddle 1");
-    // DeclareStorageVariable("local", "Saddle 1 Quantity", 1);
+    // DeclareStorageVariable("local", "Item Name: Test Product", "Test Product");
+    // DeclareStorageVariable("local", "Test Product Quantity", 2);
 
     setTimeout(() => {
       // Getting the cart items
