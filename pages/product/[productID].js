@@ -1,5 +1,5 @@
 // React/Next Imports
-import { useEffect, useState, useRef } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import fs from "fs";
 import path from "path";
@@ -7,14 +7,14 @@ import path from "path";
 // Library Imports
 
 // Data/Functions/Images Imports
-import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
+import productsData from "../../public/data/Store_Data/All_Products.json";
 
 // Component Imports
 
 // Style Imports
-import "../assets/styles/modules/Index/Index.module.css";
+import "../../assets/styles/modules/Product/Product.module.css";
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ params }) {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
   const STORE_DATA_DIRECTORY = "public/data/Store_Data/";
 
@@ -58,6 +58,9 @@ export async function getServerSideProps() {
   let SADDLE_ITEMS_DATA = undefined;
   let GUN_ITEMS_DATA = undefined;
 
+  const productID = params.productID;
+  const product = productsData.find((p) => p.productID === productID);
+
   try {
     PH_ICONS_DATA = JSON.parse(PH_ICONS_DATA_FC);
     HAT_ITEMS_DATA = JSON.parse(HAT_ITEMS_DATA_FC);
@@ -67,6 +70,7 @@ export async function getServerSideProps() {
 
     return {
       props: {
+        product,
         PH_ICONS_DATA,
         HAT_ITEMS_DATA,
         BOOT_ITEMS_DATA,
@@ -89,32 +93,23 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({
-  PH_ICONS_DATA,
-  HAT_ITEMS_DATA,
-  BOOT_ITEMS_DATA,
-  SADDLE_ITEMS_DATA,
-  GUN_ITEMS_DATA,
-}) {
+export default function Product({ product }) {
   const router = useRouter();
 
-  // Saving Cart Data
-  useEffect(() => {
-    // DeclareStorageVariable("local", "Item Name: Boot 1", "Boot 1");
-    // DeclareStorageVariable("local", "Boot 1 Quantity", 2);
-    // DeclareStorageVariable("local", "Item Name: Saddle 1", "Saddle 1");
-    // DeclareStorageVariable("local", "Saddle 1 Quantity", 1);
-
-    setTimeout(() => {
-      // Getting the cart items
-      SaveCartItems(
-        HAT_ITEMS_DATA,
-        BOOT_ITEMS_DATA,
-        SADDLE_ITEMS_DATA,
-        GUN_ITEMS_DATA
-      );
-    }, 500);
-  }, []);
-
-  return "";
+  return (
+    <div>
+      <span>{product.productID}</span>
+      <br />
+      <br />
+      <span>{product.productName}</span>
+      <br />
+      <br />
+      <span>{product.productImg}</span>
+      <br />
+      <br />
+      <p>{product.productText}</p>
+      <p>{product.productPrice}</p>
+      <br />
+    </div>
+  );
 }

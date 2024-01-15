@@ -1,5 +1,5 @@
 // React/Next Imports
-import { useEffect, useState, useRef } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import fs from "fs";
 import path from "path";
@@ -7,12 +7,11 @@ import path from "path";
 // Library Imports
 
 // Data/Functions/Images Imports
-import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
 
 // Component Imports
 
 // Style Imports
-import "../assets/styles/modules/Index/Index.module.css";
+import "../assets/styles/modules/Store/Store.module.css";
 
 export async function getServerSideProps() {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
@@ -89,7 +88,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({
+export default function Store({
   PH_ICONS_DATA,
   HAT_ITEMS_DATA,
   BOOT_ITEMS_DATA,
