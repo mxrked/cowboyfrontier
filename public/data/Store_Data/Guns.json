@@ -1,0 +1,9 @@
+[
+  {
+    "productID": "P_01",
+    "productName": "Test Product",
+    "productImg": "Test Product Img",
+    "productText": "This is a test product.",
+    "productPrice": 12.34
+  }
+]
