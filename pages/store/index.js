@@ -9,14 +9,14 @@ import path from "path";
 // Data/Functions/Images Imports
 import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
 import DeclareStorageVariable from "@/assets/functions/data/storage/DeclareStorageVariable";
-import productsData from "../../public/data/Store_Data/All_Products.json";
 
 // Component Imports
+import { DesktopNav } from "@/assets/components/global/Nav/Desktop/DesktopNav";
 
 // Style Imports
-import "../../assets/styles/modules/Product/Product.module.css";
+import "../../assets/styles/modules/Store/Store.module.css";
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps() {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
   const STORE_DATA_DIRECTORY = "public/data/Store_Data/";
 
@@ -60,9 +60,6 @@ export async function getServerSideProps({ params }) {
   let SADDLE_ITEMS_DATA = undefined;
   let GUN_ITEMS_DATA = undefined;
 
-  const productID = params.productID;
-  const product = productsData.find((p) => p.productID === productID);
-
   try {
     PH_ICONS_DATA = JSON.parse(PH_ICONS_DATA_FC);
     HAT_ITEMS_DATA = JSON.parse(HAT_ITEMS_DATA_FC);
@@ -72,7 +69,6 @@ export async function getServerSideProps({ params }) {
 
     return {
       props: {
-        product,
         PH_ICONS_DATA,
         HAT_ITEMS_DATA,
         BOOT_ITEMS_DATA,
@@ -95,7 +91,13 @@ export async function getServerSideProps({ params }) {
   }
 }
 
-export default function Product({ product }) {
+export default function Store({
+  PH_ICONS_DATA,
+  HAT_ITEMS_DATA,
+  BOOT_ITEMS_DATA,
+  SADDLE_ITEMS_DATA,
+  GUN_ITEMS_DATA,
+}) {
   const router = useRouter();
 
   // Saving Cart Data
@@ -112,22 +114,13 @@ export default function Product({ product }) {
         GUN_ITEMS_DATA
       );
     }, 500);
-  });
+  }, []);
 
   return (
-    <div>
-      <span>{product.productID}</span>
-      <br />
-      <br />
-      <span>{product.productName}</span>
-      <br />
-      <br />
-      <span>{product.productImg}</span>
-      <br />
-      <br />
-      <p>{product.productText}</p>
-      <p>{product.productPrice}</p>
-      <br />
+    <div id="PAGE" className="page">
+      <DesktopNav />
+
+      <div id="PAGE_CNT"></div>
     </div>
   );
 }

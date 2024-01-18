@@ -11,6 +11,7 @@ import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
 import DeclareStorageVariable from "@/assets/functions/data/storage/DeclareStorageVariable";
 
 // Component Imports
+import { DesktopNav } from "@/assets/components/global/Nav/Desktop/DesktopNav";
 
 // Style Imports
 import "../assets/styles/modules/Cart/Cart.module.css";
@@ -115,5 +116,11 @@ export default function Cart({
     }, 500);
   }, []);
 
-  return "";
+  return (
+    <div id="PAGE" className="page">
+      <DesktopNav />
+
+      <div id="PAGE_CNT"></div>
+    </div>
+  );
 }

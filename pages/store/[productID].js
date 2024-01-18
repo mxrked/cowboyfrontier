@@ -9,13 +9,15 @@ import path from "path";
 // Data/Functions/Images Imports
 import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
 import DeclareStorageVariable from "@/assets/functions/data/storage/DeclareStorageVariable";
+import productsData from "../../public/data/Store_Data/All_Products.json";
 
 // Component Imports
+import { DesktopNav } from "@/assets/components/global/Nav/Desktop/DesktopNav";
 
 // Style Imports
-import "../assets/styles/modules/Store/Store.module.css";
+import "../../assets/styles/modules/Product/Product.module.css";
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ params }) {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
   const STORE_DATA_DIRECTORY = "public/data/Store_Data/";
 
@@ -59,6 +61,9 @@ export async function getServerSideProps() {
   let SADDLE_ITEMS_DATA = undefined;
   let GUN_ITEMS_DATA = undefined;
 
+  const productID = params.productID;
+  const product = productsData.find((p) => p.productID === productID);
+
   try {
     PH_ICONS_DATA = JSON.parse(PH_ICONS_DATA_FC);
     HAT_ITEMS_DATA = JSON.parse(HAT_ITEMS_DATA_FC);
@@ -68,6 +73,7 @@ export async function getServerSideProps() {
 
     return {
       props: {
+        product,
         PH_ICONS_DATA,
         HAT_ITEMS_DATA,
         BOOT_ITEMS_DATA,
@@ -90,13 +96,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Store({
-  PH_ICONS_DATA,
-  HAT_ITEMS_DATA,
-  BOOT_ITEMS_DATA,
-  SADDLE_ITEMS_DATA,
-  GUN_ITEMS_DATA,
-}) {
+export default function Product({ product }) {
   const router = useRouter();
 
   // Saving Cart Data
@@ -113,7 +113,13 @@ export default function Store({
         GUN_ITEMS_DATA
       );
     }, 500);
-  }, []);
+  });
 
-  return "";
+  return (
+    <div id="PAGE" className="page">
+      <DesktopNav />
+
+      <div id="PAGE_CNT"></div>
+    </div>
+  );
 }

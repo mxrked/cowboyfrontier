@@ -10,10 +10,15 @@ import path from "path";
 import SaveCartItems from "@/assets/functions/data/cart/SaveCartItems";
 import DeclareStorageVariable from "@/assets/functions/data/storage/DeclareStorageVariable";
 
+import { INDEX_TOP_BG } from "@/assets/cdns/CDNBgs";
+
 // Component Imports
+import { DesktopNav } from "@/assets/components/global/Nav/Desktop/DesktopNav";
+import { Top } from "@/assets/components/pages/All/Top";
 
 // Style Imports
 import "../assets/styles/modules/Index/Index.module.css";
+import index_styles from "../assets/styles/modules/Index/Index.module.css";
 
 export async function getServerSideProps() {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
@@ -115,5 +120,23 @@ export default function Home({
     }, 500);
   }, []);
 
-  return "";
+  const TOP_OBJECT = {
+    topID: "TOP_INDEX",
+    stylesSrc: { index_styles },
+    withLink: true,
+    topBG: INDEX_TOP_BG,
+    topBGAlt: "Cowboyfrontier: Man riding horse with equipment.",
+    headingA: "boots, hats, ",
+    headingB: "saddles & guns.",
+    text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    linkRoute: "/store",
+  };
+
+  return (
+    <div id="PAGE" className="page">
+      <DesktopNav />
+
+      <div id="PAGE_CNT"></div>
+    </div>
+  );
 }
