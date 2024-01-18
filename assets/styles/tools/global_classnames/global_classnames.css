@@ -1,1 +1,30 @@
-/*# sourceMappingURL=global_classnames.css.map */
+.full-second {
+  transition: 1s ease-in-out !important;
+}
+
+.half-second {
+  transition: 0.5s ease-in-out !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.shake-element {
+  animation: shakeElement 0.2s ease-in-out infinite;
+}
+
+@keyframes shakeElement {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25%, 75% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+.toggle-dropdown {
+  background-color: rgb(26, 26, 26) !important;
+}/*# sourceMappingURL=global_classnames.css.map */
