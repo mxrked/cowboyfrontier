@@ -19,6 +19,7 @@ import { Top } from "@/assets/components/pages/All/Top";
 // Style Imports
 import "../assets/styles/modules/Index/Index.module.css";
 import index_styles from "../assets/styles/modules/Index/Index.module.css";
+import { SearchPopup } from "@/assets/components/global/Nav/Search/SearchPopup";
 
 export async function getServerSideProps() {
   const PAGE_HEAD_DATA_DIRECTORY = "public/data/Page_Head_Data/";
@@ -106,8 +107,8 @@ export default function Home({
 
   // Saving Cart Data
   useEffect(() => {
-    // DeclareStorageVariable("local", "Item Name: Test Product", "Test Product");
-    // DeclareStorageVariable("local", "Test Product Quantity", 2);
+    DeclareStorageVariable("local", "Item Name: Test Product", "Test Product");
+    DeclareStorageVariable("local", "Test Product Quantity", 2);
 
     setTimeout(() => {
       // Getting the cart items
@@ -135,6 +136,7 @@ export default function Home({
   return (
     <div id="PAGE" className="page">
       <DesktopNav />
+      <SearchPopup />
 
       <div id="PAGE_CNT"></div>
     </div>
